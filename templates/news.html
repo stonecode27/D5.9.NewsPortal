@@ -1,5 +1,7 @@
 {% extends 'default.html' %}
 
+{% load custom_filters %}
+
 {% block title %}
 Новости
 {% endblock title %}
@@ -13,7 +15,7 @@
 
 {% for post in posts %}
 <h2 align="left">
-    {{ post.header }}
+    {{ post.header|censor }}
 </h2>
 
 <h5 align="left">
@@ -21,7 +23,7 @@
 </h5>
 
 <div align="left">
-    {{ post.text|truncatewords:20 }}
+    {{ post.text|truncatewords:20|censor }}
 </div>
 {% endfor %}
 {% endblock content %}

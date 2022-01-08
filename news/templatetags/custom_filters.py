@@ -4,7 +4,7 @@ register = template.Library()
 
 @register.filter(name='censor')
 def censor(text :str):
-    offensives = ['девка', 'ублюдок']
+    offensives = ['девка', 'ублюдок', 'неизвестный']
     list_of_words = text.split()
     safe_list = []
     for word in list_of_words:

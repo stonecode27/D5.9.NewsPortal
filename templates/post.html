@@ -1,12 +1,14 @@
 {% extends 'default.html' %}
 
+{% load custom_filters %}
+
 {% block title %}
 Новости
 {% endblock title %}
 
 {% block content %}
 <h1 align="left">
-    {{ post.header }}
+    {{ post.header|censor }}
 </h1>
 
 <h5 align="left">
@@ -14,6 +16,6 @@
 </h5>
 
 <div align="left">
-    {{ post.text }}
+    {{ post.text|censor }}
 </div>
 {% endblock content %}

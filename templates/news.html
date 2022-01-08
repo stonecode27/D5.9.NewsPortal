@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+
+{% block title %}
+Новости
+{% endblock title %}
+
+
+{% block content %}
+
+<h1 align="left">
+    Всего новостей: {{ posts|length }}
+</h1>
+
+{% for post in posts %}
+<h2 align="left">
+    {{ post.header }}
+</h2>
+
+<h5 align="left">
+    {{ post.creation_date|date:'d M Y' }}
+</h5>
+
+<div align="left">
+    {{ post.text|truncatewords:20 }}
+</div>
+{% endfor %}
+{% endblock content %}

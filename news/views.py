@@ -6,6 +6,7 @@ class PostsList(ListView):
     model = Post
     template_name = 'news.html'
     context_object_name = 'posts'
+    queryset = Post.objects.order_by('-id')
 
 class PostAsIs(DetailView):
     model = Post

@@ -1,0 +1,10 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block content %}
+<form method="GET">
+    {{ filter.form }}
+    <input type="submit" value="Найти">
+</form>
+{% endblock content %}

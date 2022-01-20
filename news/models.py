@@ -32,6 +32,9 @@ class Post(models.Model):
     text = models.TextField()
     rate = models.IntegerField(default=0)
 
+    def get_absolute_url(self):
+        return f'/news/{self.id}'
+
     def like(self):
         self.rate += 1
         self.save()

@@ -24,6 +24,7 @@ class Search(ListView):
     model = Post
     template_name = 'search.html'
     context_object_name = 'search'
+    queryset = Post.objects.order_by('-id')
     paginate_by = 1
 
     def get_context_data(self, **kwargs):
@@ -35,9 +36,8 @@ class NewPost(CreateView):
     template_name = 'create.html'
     form_class = PostForm
 
-
 class EditPost(UpdateView):
-    template_name = 'create.html'
+    template_name = 'edit.html'
     form_class = PostForm
 
     def get_object(self, **kwargs):

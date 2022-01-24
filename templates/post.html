@@ -13,6 +13,16 @@
 
 <h5 align="left">
     {{ post.creation_date|date:'d M Y' }}
+    <div>
+        <a href="{% url 'news_delete' post.id %}">
+                Удалить
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'news_edit' post.id %}">
+                Редактировать
+        </a>
+    </div>
 </h5>
 
 <div align="left">

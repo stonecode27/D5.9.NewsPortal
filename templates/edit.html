@@ -5,7 +5,7 @@
 {% block title %} Добавить новость или статью {% endblock title %}
 
 {% block content %}
-<h3 align="left">Создать новость или статью</h3>
+<h3 align="left">Редактировать статью</h3>
 <form method=post>
     {% csrf_token %}
     {% for field in form %}
@@ -13,7 +13,7 @@
     <p align="left"> {{ field }} </p>
     {% endfor %}
     <div align="left">
-    <input type="submit" align="left" value="Добавить новость">
+    <input type="submit" align="left" value="Сохранить">
     </div>
 </form>
 {% endblock content %}

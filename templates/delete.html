@@ -7,17 +7,22 @@
 {% endblock title %}
 
 {% block content %}
-<h2>Вы уверенны, что хотите удалить запись?</h2>
-        <td>
+<h2 align="left">Вы уверенны, что хотите удалить запись?</h2>
+        <h3 align="left">
             {{ post.header|censor }}
-        </td>
-        <td>
-            {{ post.text|censor }}
-        </td>
+        </h3>
+        <div align="left">
+            <td>
+                {{ post.text|truncatewords:20|censor }}
+            </td>
+        </div>
     </tr>
 </table>
 
 <form method="POST">
     {% csrf_token %}
-    <input type="submit" value="подтвердить"></form>
+    <div align="left">
+    <input type="submit" value="Подтвердить">
+    </div>
+</form>
 {% endblock content %}

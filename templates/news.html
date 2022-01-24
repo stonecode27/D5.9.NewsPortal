@@ -10,12 +10,14 @@
 {% block content %}
 
 <h1 align="left">
-    Всего новостей: {{ posts|length }}
+    Показано новостей: {{ posts|length }}
 </h1>
 
 {% for post in posts %}
 <h2 align="left">
+    <a style="color: black" href="{% url 'post' post.id %}">
     {{ post.header|censor }}
+        </a>
 </h2>
 
 <h5 align="left">

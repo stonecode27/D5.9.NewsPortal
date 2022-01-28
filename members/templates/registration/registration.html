@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %} Зарегистрироваться {% endblock title %}
+
+{% block content %}
+<h3 align="left">Регистрация</h3>
+<form method=post>
+    {% csrf_token %}
+    {% for field in form %}
+    <h4 align="left"> {{ field.label_tag }} </h4>
+    <p align="left"> {{ field }} </p>
+    {% endfor %}
+    <div align="left">
+    <input type="submit" align="left" value="Зарегистрироваться">
+    </div>
+</form>
+{% endblock content %}

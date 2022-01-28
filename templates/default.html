@@ -24,12 +24,36 @@
                </button>
                <div class="collapse navbar-collapse" id="navbarResponsive">
                    <ul class="navbar-nav ml-auto">
-                       <li class="nav-item active">
+
+                       {% if user.is_authenticated %}
+                        <li class="nav-item active">
                            <a class="nav-link" href="{% url 'news_search' %}">Поиск
                            </a>
                        </li>
                        <li class="nav-item">
-                           <a class="nav-link" href="{% url 'news_add' %}">Добавить новость</a>
+                           <a class="nav-link" href="{% url 'news_add' %}">Добавить новость
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="{% url 'account_logout' %}">Выйти
+                           </a>
+                       </li>
+                       {% if is_not_author %}
+                       <li class="nav-item">
+                           <a class="nav-link" href="{% url 'become_an_author' %}">Стать автором
+                           </a>
+                       </li>
+                       {% endif %}
+                       {% else %}
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'account_signup' %}">Регистрация
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="{% url 'account_login' %}">Войти
+                       {% endif %}
+                           </a>
+                       </li>
                    </ul>
                </div>
            </div>

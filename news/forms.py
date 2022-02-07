@@ -1,5 +1,5 @@
 from django.forms import DateInput, ModelForm, CheckboxSelectMultiple, Textarea
-from .models import Post, Author
+from .models import Post, Category
 
 
 class DateInputWidget(DateInput):
@@ -19,3 +19,11 @@ class PostForm(ModelForm):
         }
         widgets = {
         }
+
+
+class CategoryForm(ModelForm):
+    class Meta:
+        model = Category
+        fields = ('category_name', 'subscribers')
+        labels = {'category_name': 'Категория'}
+

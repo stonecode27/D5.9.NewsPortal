@@ -11,21 +11,36 @@
     {{ post.header|censor }}
 </h1>
 
-<h5 align="left">
+<h6 align="left">
     {{ post.creation_date|date:'d M Y' }}
-    <div>
-        <a href="{% url 'news_delete' post.id %}">
-                Удалить
-        </a>
-    </div>
-    <div>
-        <a href="{% url 'news_edit' post.id %}">
-                Редактировать
-        </a>
-    </div>
-</h5>
+</h6>
+
+<p style="color: black;
+          text-align:left;
+          font: italic small-caps bold 16px/2 cursive"> Категории:
+    {% for category in post.mtm_with_category.all %}
+    <a href="{% url 'category_subscribe' category.id %}"
+       style="color: black;
+          text-align:left;
+          font: italic small-caps bold 16px/2 cursive"
+    title="Подписаться на категорию {{ category.category_name }}">
+    {{ category.category_name }}
+    </a>
+    {% endfor %}
+</p>
 
 <div align="left">
     {{ post.text|censor }}
 </div>
+    <a href="{% url 'news_edit' post.id %}">
+            <button>
+                Редактировать
+            </button>
+        </a>
+    <a href="{% url 'news_delete' post.id %}">
+            <button>
+                Удалить
+            </button>
+    </a>
+
 {% endblock content %}

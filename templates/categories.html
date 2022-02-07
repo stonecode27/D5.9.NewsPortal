@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block content %}
+
+<h1 align="left">
+    Показано категорий: {{ categories|length }}
+</h1>
+
+{% for category in categories %}
+<h2 align="left">
+    <a style="color: black" href="{% url 'category_subscribe' category.id %}"
+       title="Подписаться на категорию {{ category.category_name }}">
+    {{ category.category_name }}
+        </a>
+</h2>
+
+{% endfor %}
+{% endblock content %}

@@ -32,6 +32,7 @@ class RegistrationForm(UserCreationForm):
         labels = {"username":"Имя пользователя"}
         field_classes = {'username': UsernameField}
 
+
 class BasicSignupForm(SignupForm):
     def save(self, request):
         user = super(BasicSignupForm, self).save(request)

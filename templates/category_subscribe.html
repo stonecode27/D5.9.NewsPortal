@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Новости
+{% endblock title %}
+
+{% block content %}
+<h2 align="left">{{ user.username }}, Вы уверенны, что хотите подписаться на категорию {{ category }}?</h2>
+    </tr>
+</table>
+
+<form method="POST">
+    {% csrf_token %}
+    <div align="left">
+    <input type="submit" value="Подтвердить">
+    </div>
+</form>
+{% endblock content %}

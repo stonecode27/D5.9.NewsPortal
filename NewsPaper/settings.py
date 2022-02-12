@@ -169,3 +169,9 @@ EMAIL_USE_SSL = True
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
+CELERY_BROKER_URL = 'redis://:JFgRiZwz0DAoXvKb1Ssn5GYQ6K6BdmSq@redis-19158.c292.ap-southeast-1-1.ec2.cloud.redislabs.com:19158/0'
+CELERY_RESULT_BACKEND = 'redis://:JFgRiZwz0DAoXvKb1Ssn5GYQ6K6BdmSq@redis-19158.c292.ap-southeast-1-1.ec2.cloud.redislabs.com:19158/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

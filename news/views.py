@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm, CategoryForm
+from .tasks import hello
 
 
 class PostsList(ListView):

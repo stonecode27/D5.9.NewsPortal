@@ -7,7 +7,7 @@ from allauth.account.models import EmailAddress
 from .models import Category, Post
 
 
-@receiver(m2m_changed)
+@receiver(m2m_changed, sender=Post)
 def new_post_email_notify(sender, instance, **kwargs):
     print(instance)
     if kwargs['action'] == "post_add":

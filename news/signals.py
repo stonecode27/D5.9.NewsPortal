@@ -5,9 +5,10 @@ from django.dispatch import receiver
 
 from allauth.account.models import EmailAddress
 from .models import Category, Post
+from .tasks import send_post_notify
 
 
-@receiver(m2m_changed, sender=Post)
+@receiver(m2m_changed)
 def new_post_email_notify(sender, instance, **kwargs):
     print(instance)
     if kwargs['action'] == "post_add":
@@ -20,10 +21,7 @@ def new_post_email_notify(sender, instance, **kwargs):
 {instance.text[:50]}...
 Полная версия доступна по ссылке: http://127.0.0.1:8000/news/{instance.id}
 """
-                    with open('templates/emails/new_post_notify.html') as html_content:
-                        msg = EmailMultiAlternatives(subject, text_content, "anewsportal@mail.ru", [sub.email])
-                        # msg.attach_alternative(html_content.read(), "text/html")
-                        msg.send()
+                    send_post_notify.delay(subject, text_content, sub.email)
 
 
 @receiver(email_confirmed)

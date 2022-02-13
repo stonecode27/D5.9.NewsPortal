@@ -1,13 +1,16 @@
 {% extends 'default.html' %}
 
 {% load custom_filters %}
+{% load cache %}
 
 {% block title %}
 Новости
 {% endblock title %}
 
 {% block content %}
+{% cache 1000 are_you_sure %}
 <h2 align="left">Вы уверенны, что хотите удалить запись?</h2>
+{% end_cache %}
         <h3 align="left">
             {{ post.header|censor }}
         </h3>

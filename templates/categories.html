@@ -1,13 +1,17 @@
 {% extends 'default.html' %}
 
 {% load custom_filters %}
+{% load cache %}
 
 {% block content %}
 
+{% cache 900 header %}
 <h1 align="left">
     Показано категорий: {{ categories|length }}
 </h1>
+{% endcache %}
 
+{% cache 900 categories %}
 {% for category in categories %}
 <h2 align="left">
     <a style="color: black" href="{% url 'category_subscribe' category.id %}"
@@ -15,6 +19,6 @@
     {{ category.category_name }}
         </a>
 </h2>
-
 {% endfor %}
+{% endcache %}
 {% endblock content %}

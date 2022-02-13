@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.cache import cache
 
 # Create your models here.
 
@@ -42,6 +43,10 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'/news/{self.id}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        cache.delete(f'post-{self.pk}')
 
     def like(self):
         self.rate += 1

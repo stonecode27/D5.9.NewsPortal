@@ -158,7 +158,8 @@ ACCOUNT_FORMS = {'signup': 'members.forms.BasicSignupForm'}
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "static",
+    BASE_DIR / "users_images"
 ]
 
 EMAIL_HOST = 'smtp.mail.ru'
@@ -182,3 +183,6 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, 'cache_files'),
     }
 }
+
+MEDIA_URL = "/users_images/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'users_images')

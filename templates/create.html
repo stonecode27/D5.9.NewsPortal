@@ -6,7 +6,7 @@
 
 {% block content %}
 <h3 align="left">Создать новость или статью</h3>
-<form method=post>
+<form method=post enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
     <h4 align="left"> {{ field.label_tag }} </h4>

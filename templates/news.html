@@ -9,19 +9,26 @@
 </h1>
 
 {% for post in posts %}
-<h2 align="left">
-    <a style="color: black" href="{% url 'post' post.id %}">
-    {{ post.header|censor }}
-        </a>
-</h2>
-
-<h5 align="left">
-    {{ post.creation_date|date:'d M Y' }}
-</h5>
-
-<div align="left">
-    {{ post.text|truncatewords:20|censor }}
-</div>
+<table style="width: 100%; border: 1rem solid;" align="left" >
+    <tbody align="left">
+        <tr>
+            <td style="width: 73.4266%;">
+                <h2><a style="color: black" href="{% url 'post' post.id %}">
+                    {{ post.header|censor }}
+                </a>
+                </h2>
+                <h4>{{ post.creation_date|date:'d M Y' }}</h4>
+                <p>{{ post.text|truncatewords:20|censor }}</p>
+            </td>
+            <td style="width: 26.4568%;">
+                {% if post.preview_image %}
+                    <img src="{{ post.preview_image.url }}" alt="Обложка новости" height="200">
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<hr />
 {% endfor %}
 {% if is_paginated %}
 

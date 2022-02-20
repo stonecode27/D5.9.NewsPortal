@@ -1,8 +1,8 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.cache import cache
 
-# Create your models here.
 
 class Author(models.Model):
     one_to_one_relation = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -40,6 +40,7 @@ class Post(models.Model):
     header = models.CharField(max_length=255)
     text = models.TextField()
     rate = models.IntegerField(default=0)
+    preview_image = models.ImageField(upload_to='news_previews/', blank=True)
 
     def get_absolute_url(self):
         return f'/news/{self.id}'

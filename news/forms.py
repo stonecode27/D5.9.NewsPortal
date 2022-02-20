@@ -9,13 +9,14 @@ class DateInputWidget(DateInput):
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ('post_author_relation', 'news_or_article', 'mtm_with_category', 'header', 'text')
+        fields = ('post_author_relation', 'news_or_article', 'mtm_with_category', 'header', 'text', 'preview_image')
         labels = {
             'post_author_relation': 'Автор',
             'news_or_article': 'Тип записи',
             'mtm_with_category': 'Категории (одна или несколько)',
             'header': 'Заголовок',
-            'text': 'Текст статьи'
+            'text': 'Текст статьи',
+            'preview_image': 'Обложка новости'
         }
         widgets = {
         }

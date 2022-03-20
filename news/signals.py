@@ -1,11 +1,12 @@
 from django.db.models.signals import post_save, m2m_changed
+from django.core.signals import request_started
 from allauth.account.signals import email_confirmed
 from django.core.mail import EmailMultiAlternatives
 from django.dispatch import receiver
 
 from allauth.account.models import EmailAddress
 from .models import Category, Post
-from .tasks import send_post_notify
+from .tasks import send_post_notify, print_hello
 
 
 @receiver(m2m_changed)
@@ -32,3 +33,7 @@ def welcome(request, email_address, **kwargs):
         msg = EmailMultiAlternatives(subject, text_content, "anewsportal@mail.ru", [email_address.email])
         msg.attach_alternative(html_content.read(), "text/html")
         msg.send()
+
+# @receiver(request_started)
+# def call_hello(**kwargs):
+#     print_hello()

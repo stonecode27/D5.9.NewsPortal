@@ -29,3 +29,7 @@ def weekly_category_digest():
         """
                     msg = EmailMultiAlternatives(subject, text_content, "anewsportal@mail.ru", [sub.email])
                     msg.send()
+
+@shared_task
+def print_hello():
+    print("Hello")
